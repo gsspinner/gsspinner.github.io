@@ -1,6 +1,18 @@
+/**
+Oneal Abdulrahim
+
+Purpose: For use in Geek Squad Precincts to determine what to do if you have free time
+
+License: open & free for all to use
+
+Last updated: 7/30/2016
+*/
+
+// Random function for random integers within a range (needed for speed)
 function rand(min, max) {
   return Math.random() * (max - min) + min;
 }
+
 
 var color = ['#ff6600', '#333333', '#ff6600', '#333333', '#ff6600', '#333333'];
 var label = ['Func Check', 'Front Counter', 'Call Logs', "Write up", "Hello", "Goodbye"];
@@ -16,10 +28,12 @@ var center = width / 2;      // center
 var isStopped = false;
 var lock = false;
 
+// Conversion from degrees to radians
 function deg2rad(deg) {
     return deg * Math.PI / 180;
 }
 
+// Usage of canvas to create each portion of the circle
 function drawSlice(deg, color) {
     ctx.beginPath();
     ctx.fillStyle = color;
@@ -29,6 +43,7 @@ function drawSlice(deg, color) {
     ctx.fill();
 }
 
+// Usage of canvas to create text atop each slice
 function drawText(deg, text) {
     ctx.save();
     ctx.translate(center, center);
@@ -40,6 +55,7 @@ function drawText(deg, text) {
     ctx.restore();
 }
 
+// Usage of canvas to draw (attach) elements to the canvas using above methods
 function drawImg() {
     ctx.clearRect(0, 0, width, width);
     for(var i=0; i<slices; i++){
@@ -49,24 +65,27 @@ function drawImg() {
     }
 }
 
+// Making the entire canvas animate
 (function anim() {
     deg += -speed;
     deg %= 360;
 
     // Increment speed
-    if(!isStopped && speed<3){
-        speed = speed+1 * 0.1;
+    if(!isStopped && speed < 3){
+        speed = speed + 1 * 0.1;
     }
+    
     // Decrement Speed
     if(isStopped){
-        if(!lock){
+        if (!lock){
             lock = true;
-            slowDownRand = rand(0.994, 0.998);
+            slowDownRand = rand(0.994, 0.999);
         } 
         speed = speed > 0.2 ? speed *= slowDownRand : 0;
     }
+    
     // Stopped!
-    if(lock && !speed){
+    if (lock && !speed){
         var ai = Math.floor(((360 - deg - 90) % 360) / sliceDeg); // deg 2 Array Index
         ai = (slices + ai) % slices; // Fix negative index
         return Materialize.toast("You got:\n"+ label[ai], 5000);
@@ -76,10 +95,12 @@ function drawImg() {
     window.requestAnimationFrame( anim );
 }());
 
+// Materal button for stopping spin
 document.getElementById("spin").addEventListener("mousedown", function(){
   isStopped = true;
 }, false);
 
+// Material button for refreshing DIV tag after animation is completed
 document.getElementById("again").addEventListener("mousedown", function(){
   setTimeout("location.reload(true);", 500);
 }, false);
