@@ -14,8 +14,8 @@ function rand(min, max) {
 }
 
 
-var color = ['#ff6600', '#333333', '#ff6600'];
-var label = ['Func Check', 'Front Counter', 'Call Logs'];
+var color = ['#ff6600', '#333333', '#ff6600', '#333333', '#ff6600', '#333333'];
+var label = ['Func Check', 'Front Counter', 'Call Logs', "Clean Workspace", "Shipping", "Free pick!"];
 var slices = color.length;
 var sliceDeg = 360/slices;
 var deg = rand(0, 360);
