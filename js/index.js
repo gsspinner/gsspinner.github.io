@@ -13,7 +13,7 @@ function rand(min, max) {
   return Math.random() * (max - min) + min;
 }
 
-
+var objDate = new Date();
 var color = ['#ff6600', '#333333', '#ff6600', '#333333', '#ff6600', '#333333'];
 var label = ['Func Check', 'Front Counter', 'Call Logs', "Clean Workspace", "Shipping", "Free pick!"];
 var slices = color.length;
@@ -27,6 +27,20 @@ var width = canvas.width; // size
 var center = width / 2;      // center
 var isStopped = false;
 var lock = false;
+
+if (objDate.getHours() < 12) {
+    document.getElementById('header').innerHTML = ("Here are the morning duties!");
+    color = ['#ff917a', '#bc2100', '#ff7e63', '#931900', '#ff7e63', '#ff2c00'];
+    label = ['Complete SCMR', 'Front Counter', 'Clean Workspace', 'Contact Client', 'Func Checks', 'Verify Check In'];
+} else if (objDate.getHours() > 12 && objDate.getHours() < 18) {
+    document.getElementById('header').innerHTML = ("Ahhh, the mid shift...");
+    color = ['#6989D4', '#0A2D7C', '#446BC6', '#0E3AA0', '#446BC6', '#0E3AA0'];
+    label = ['Func Checks', 'Clean Workspace', 'Call logs, ACI', 'Front Counter', 'Daily Goals Check', 'TVs need testing, bro'];
+} else if (objDate.getHours() > 18 && objDate.getHours() < 23) {
+    document.getElementById('header').innerHTML = ("It's almost closing time!");
+    color = ['#D25BD2', '#780078', '#C234C2', '#780078', '#C234C2', '#9B009B'];
+    label = ['Func Checks', 'Dispose trash', 'Clean Booths & Front', 'ARA Notes/EMail', 'Closing duties, HUB?', 'Manager Check Out'];
+}
 
 // Conversion from degrees to radians
 function deg2rad(deg) {
@@ -79,7 +93,7 @@ function drawImg() {
     if(isStopped){
         if (!lock){
             lock = true;
-            slowDownRand = rand(0.975, 0.985);
+            slowDownRand = rand(0.975, 0.999);
         } 
         speed = speed > 0.2 ? speed *= slowDownRand : 0;
     }
