@@ -40,7 +40,7 @@ if (objDate.getHours() > 6 && objDate.getHours < 12) {
     document.getElementById('header').innerHTML = ("It's closing time!");
     color = ['#D25BD2', '#780078', '#C234C2', '#780078', '#C234C2', '#9B009B'];
     label = ['Func Checks', 'Dispose trash', 'Clean Booths & Front', 'ARA Notes/EMail', 'Closing duties, HUB?', 'Manager Check Out'];
-} else if (objDate.getHours() >= 0 || objDate.getHours() < 6) {
+} else if (objDate.getHours() >= 0 && objDate.getHours() < 6) {
     document.getElementById('header').innerHTML = ("I hope you're not working right now.");
     color = ['#fff'];
     label = ['Contemplate life'];
