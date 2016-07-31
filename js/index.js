@@ -28,7 +28,11 @@ var center = width / 2;      // center
 var isStopped = false;
 var lock = false;
 
-if (objDate.getHours() > 6 && objDate.getHours < 12) {
+if (objDate.getHours() >= 0 && objDate.getHours() < 6) {
+    document.getElementById('header').innerHTML = ("I hope you're not working right now.");
+    color = ['#000', '#000', '#000', '#000','#000', '#000'];
+    label = ['Contemplate life', 'Contemplate life', 'Contemplate life', 'Contemplate life','Contemplate life', 'Contemplate life'];
+} else if (objDate.getHours() >= 6 && objDate.getHours() < 12) {
     document.getElementById('header').innerHTML = ("Here are the morning duties!");
     color = ['#ff917a', '#bc2100', '#ff7e63', '#931900', '#ff7e63', '#ff2c00'];
     label = ['Complete SCMR', 'Front Counter', 'Clean Workspace', 'Contact Client', 'Func Checks', 'Verify Check In'];
@@ -40,10 +44,6 @@ if (objDate.getHours() > 6 && objDate.getHours < 12) {
     document.getElementById('header').innerHTML = ("It's closing time!");
     color = ['#D25BD2', '#780078', '#C234C2', '#780078', '#C234C2', '#9B009B'];
     label = ['Func Checks', 'Dispose trash', 'Clean Booths & Front', 'ARA Notes/EMail', 'Closing duties, HUB?', 'Manager Check Out'];
-} else if (objDate.getHours() >= 0 && objDate.getHours() < 6) {
-    document.getElementById('header').innerHTML = ("I hope you're not working right now.");
-    color = ['#fff'];
-    label = ['Contemplate life'];
 }
 
 // Conversion from degrees to radians
