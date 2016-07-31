@@ -28,18 +28,22 @@ var center = width / 2;      // center
 var isStopped = false;
 var lock = false;
 
-if (objDate.getHours() < 12) {
+if (objDate.getHours() > 6 && objDate.getHours < 12) {
     document.getElementById('header').innerHTML = ("Here are the morning duties!");
     color = ['#ff917a', '#bc2100', '#ff7e63', '#931900', '#ff7e63', '#ff2c00'];
     label = ['Complete SCMR', 'Front Counter', 'Clean Workspace', 'Contact Client', 'Func Checks', 'Verify Check In'];
-} else if (objDate.getHours() > 12 && objDate.getHours() < 18) {
+} else if (objDate.getHours() >= 12 && objDate.getHours() < 19) {
     document.getElementById('header').innerHTML = ("Ahhh, the mid shift...");
     color = ['#6989D4', '#0A2D7C', '#446BC6', '#0E3AA0', '#446BC6', '#0E3AA0'];
     label = ['Func Checks', 'Clean Workspace', 'Call logs, ACI', 'Front Counter', 'Daily Goals Check', 'TVs need testing, bro'];
-} else if (objDate.getHours() > 18 && objDate.getHours() < 23) {
-    document.getElementById('header').innerHTML = ("It's almost closing time!");
+} else if (objDate.getHours() >= 19 && objDate.getHours() <= 23) {
+    document.getElementById('header').innerHTML = ("It's closing time!");
     color = ['#D25BD2', '#780078', '#C234C2', '#780078', '#C234C2', '#9B009B'];
     label = ['Func Checks', 'Dispose trash', 'Clean Booths & Front', 'ARA Notes/EMail', 'Closing duties, HUB?', 'Manager Check Out'];
+} else if (objDate.getHours() >= 0 || objDate.getHours() < 6) {
+    document.getElementById('header').innerHTML = ("I hope you're not working right now.");
+    color = ['#fff'];
+    label = ['Contemplate life'];
 }
 
 // Conversion from degrees to radians
