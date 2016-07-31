@@ -79,7 +79,7 @@ function drawImg() {
     if(isStopped){
         if (!lock){
             lock = true;
-            slowDownRand = rand(0.994, 0.999);
+            slowDownRand = rand(0.975, 0.985);
         } 
         speed = speed > 0.2 ? speed *= slowDownRand : 0;
     }
